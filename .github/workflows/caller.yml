@@ -1,4 +1,4 @@
-name: Deploy Docker Sample one
+name: Ref Caller
 
 on:
   workflow_dispatch:
