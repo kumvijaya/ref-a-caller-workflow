@@ -1,17 +1,14 @@
-name: Ref Caller
+name: Call a reusable workflow and use its outputs
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        type: string
-        required: true
-        description: Version
 
 jobs:
-  call-workflow-passing-data:
-    permissions: write-all
-    uses: kumvijaya/ref-calling-workflows/.github/workflows/calling.yml@main
-    with:
-      version: ${{ inputs.version }}
-    secrets: inherit
+  job1:
+    uses: kumvijaya/ref-reuseable-workflows/.github/workflows/reuse.yml@v1
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
