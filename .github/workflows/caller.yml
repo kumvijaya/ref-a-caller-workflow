@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    uses: kumvijaya/ref-reuseable-workflows/.github/workflows/reuse.yml@v1
+    uses: kumvijaya/ref-reuseable-workflows/.github/workflows/reuse.yml@main
 
   job2:
     runs-on: ubuntu-latest
