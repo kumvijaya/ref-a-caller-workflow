@@ -1,0 +1,17 @@
+name: Deploy Docker Sample one
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: false
+        description: Version
+
+jobs:
+  call-workflow-passing-data:
+    permissions: write-all
+    uses: kumvijaya/ref-reusable-workflows/.github/workflows/calling.yml@main
+    with:
+      version: ${{ inputs.version }}
+    secrets: inherit
